@@ -9,9 +9,13 @@ If you run a Minecraft server and would like a lightweight plugin to see your se
 # Why Minebuddy?
 Minebuddy is lightweight and configurable, and it can be used on 1.13+. As a Minecraft server owner/developer, you probably spend a bit of time on Discord. Being able to view useful server statistics without leaving Discord is convenient sometimes! With Minebuddy, you can skip all of annoying channel integration and complicated configuration. 
 
+# Dependencies
+You need to have PlaceholderAPI installed to run this plugin: https://www.spigotmc.org/resources/placeholderapi.6245/
+
 # Setup
 1. Create a Discord bot here if you don't already have one: https://discord.com/developers/applications/
 2. Download and place the plugin JAR file into your plugins folder.
+3. Ensure you have PlaceholderAPI installed: https://www.spigotmc.org/resources/placeholderapi.6245/
 3. Reboot your server and open the config in plugins/Minebuddy/config.yml
 4. Set the token value to your bot's private token (do not share this token!)
 5. Boot the server
@@ -22,6 +26,7 @@ Minebuddy is lightweight and configurable, and it can be used on 1.13+. As a Min
 # Troubleshooting
 - If you get the "failed to connect to Discord" error, make sure your token is set properly.
 - If the plugin enables properly and the bot is in your discord, but commands do not work, ensure the bot has chat permissions.
+- PlaceholderAPI is a required dependency. Be sure you have it installed!
 
 # Warning
 - This bot is a staff tool, so be careful giving normal players permission to use it (they will be able to issue broadcast/stop commands).
