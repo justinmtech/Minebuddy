@@ -16,6 +16,7 @@ Minebuddy is extremely simple and configurable, and it can be used on 1.13+.
 5. Boot the server
 6. If the bot is not already in your server, invite it with the link prompted in the console startup
 7. Try using "!help" on your Discord server
+8. If it works, you're done! Feel free to change the configuration to suit your needs.
 
 # Commands
 Command syntax is determined like this: "{commandSymbol}{commandPrefix}{commandName}"
