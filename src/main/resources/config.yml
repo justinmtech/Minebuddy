@@ -1,3 +1,4 @@
+#PRIVATE TOKEN
 token: ""
 server-name: "My Server"
 broadcast-prefix: "&c&l[Broadcast] &e"
@@ -7,6 +8,7 @@ invisible-on-list-permission: "staff.invisible"
 command-symbol: "!"
 #Optional prefix used after symbol and before command (leave empty for none)
 command-prefix: ""
+#Do not change the values on the left, only the right
 commands:
   HELP: "help"
   BROADCAST: "broadcast"

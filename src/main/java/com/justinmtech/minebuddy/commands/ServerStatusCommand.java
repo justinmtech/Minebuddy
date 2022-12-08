@@ -1,19 +1,19 @@
 package com.justinmtech.minebuddy.commands;
 
 import com.justinmtech.minebuddy.util.CommandBuilder;
-import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.Bukkit;
+import com.justinmtech.minebuddy.util.ServerStatus;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
 public class ServerStatusCommand implements MessageCreateListener {
     private final FileConfiguration config;
+    private final ServerStatus status;
 
-    public ServerStatusCommand(FileConfiguration config) {
+    public ServerStatusCommand(FileConfiguration config, ServerStatus status) {
         this.config = config;
+        this.status = status;
     }
 
     @Override
@@ -27,14 +27,14 @@ public class ServerStatusCommand implements MessageCreateListener {
     }
 
     private String getStatusMessage() {
-        String serverName = getConfig().getString("server-name", "A Minecraft Server");
-        String serverVersion = PlaceholderAPI.setPlaceholders(null, "Version: " + "%server_version%");
-        String serverPlayers = PlaceholderAPI.setPlaceholders(null, "Players: " + "%server_online%/%server_max_players%");
-        String serverUptime = PlaceholderAPI.setPlaceholders(null, "Uptime: " + "%server_uptime%");
-        String uniqueJoins = PlaceholderAPI.setPlaceholders(null, "Unique Players: " + "%server_unique_joins%");
-        String ramUsage = PlaceholderAPI.setPlaceholders(null, "Ram Usage: " + "%server_ram_used%/%server_ram_total% (MB)");
-        String serverTps = PlaceholderAPI.setPlaceholders(null, "TPS (1m, 5m, 15m): %server_tps_1%, %server_tps_5%, %server_tps_15%");
-        String staffOnline = "Staff Online: " + getStaffOnline();
+        String serverName = getStatus().getName();
+        String serverVersion = "Version: " + getStatus().getVersion();
+        String serverPlayers = "Players: " + getStatus().getPlayerCount();
+        String serverUptime = "Uptime: " + getStatus().getUptime();
+        String uniqueJoins = "Unique Players: " + getStatus().getUniqueJoins();
+        String ramUsage = "Ram Usage: " + getStatus().getRamUsage() + " (MB)";
+        String serverTps = "TPS (1m, 5m, 15m): " + getStatus().getAverageTps();
+        String staffOnline = "Staff Online: " + getStatus().getStaffOnline();
         return serverName + "\n" +
                 serverVersion + "\n" +
                 serverPlayers + "\n" +
@@ -45,15 +45,8 @@ public class ServerStatusCommand implements MessageCreateListener {
                 staffOnline + "\n";
     }
 
-    //Get online staff member count (must have permission of staff-permission's value)
-    private int getStaffOnline() {
-        String permission = getConfig().getString("staff-permission");
-        if (permission == null) return 0;
-        int count = 0;
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            if (p.hasPermission(permission)) count++;
-        }
-        return count;
+    public ServerStatus getStatus() {
+        return status;
     }
 
     public FileConfiguration getConfig() {

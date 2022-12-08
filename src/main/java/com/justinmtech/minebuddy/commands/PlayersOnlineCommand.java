@@ -8,6 +8,7 @@ import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.event.message.MessageCreateEvent;
 import org.javacord.api.listener.message.MessageCreateListener;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class PlayersOnlineCommand implements MessageCreateListener {
@@ -42,7 +43,9 @@ public class PlayersOnlineCommand implements MessageCreateListener {
 
     private String getOnlinePlayers() {
         return Bukkit.getOnlinePlayers()
-                .stream()
+                .stream().filter(p -> !p.hasPermission
+                        (Objects.requireNonNull
+                                (getConfig().getString("invisible-on-list-permission", ""))))
                 .map(Player::getName)
                 .collect(Collectors.joining(", "));
     }
