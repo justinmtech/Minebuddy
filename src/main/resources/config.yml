@@ -1,0 +1,22 @@
+token: "MTA0OTg5ODUxMzkzNDM0MDE4MQ.G7niyI.fLvQHXhkur3mumBBdCT-jOjQcRSgVaBQqBsvnk"
+server-name: "My Server"
+broadcast-prefix: "&c&l[Broadcast] &e"
+staff-permission: "staff.perm"
+invisible-on-list-permission: "staff.invisible"
+#Symbol used before command
+command-symbol: "!"
+#Optional prefix used after symbol and before command (leave empty for none)
+command-prefix: ""
+commands:
+  HELP: "help"
+  BROADCAST: "broadcast"
+  PLAYERS: "players"
+  STATUS: "status"
+  STOP: "stop"
+messages:
+  server-status: "Here is the server status:"
+  stop-server: "The server is shutting down..."
+  players-online: "There are %placeholder% players online."
+  no-players-online: "There are no players online."
+  player-list: "The following players are online:"
+  help: "The following commands can be prefixed with '%placeholder%' to be executed:"
