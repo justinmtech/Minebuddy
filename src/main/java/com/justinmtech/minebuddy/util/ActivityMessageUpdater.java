@@ -24,16 +24,16 @@ public class ActivityMessageUpdater {
                 String ramUsage = getStatus().getRamUsage();
                 String activityMessage = playersOnline + " " + tps + " " + ramUsage;
                 getDiscordApi().updateActivity(ActivityType.WATCHING, activityMessage);
-                updateBotStatus(Integer.parseInt(tps.replace("*", "")));
+                updateBotStatus(Double.parseDouble(tps.replace("*", "")));
             }
         }.runTaskTimerAsynchronously(getPlugin(), 320L, 320L);
     }
 
-    private void updateBotStatus(int pastMinuteTps) {
-        if (pastMinuteTps >= 17) {
+    private void updateBotStatus(double pastMinuteTps) {
+        if (pastMinuteTps >= 17.0) {
             getDiscordApi().updateStatus(UserStatus.ONLINE);
         }
-        else if (pastMinuteTps >= 15) {
+        else if (pastMinuteTps >= 15.0) {
             getDiscordApi().updateStatus(UserStatus.IDLE);
         } else {
             getDiscordApi().updateStatus(UserStatus.DO_NOT_DISTURB);
