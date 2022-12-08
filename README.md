@@ -1,12 +1,12 @@
 # Minebuddy
 
-A Minecraft plugin utility that allows you to host a Discord bot. The bot has basic commands such as broadcast and stop, and a variety of server status information such as TPS, player count, unique joins and ram usage.
+A Minecraft plugin utility that allows you to host a Discord bot. The bot has basic admin commands such as broadcast and stop, and a variety of server status information such as TPS, player count, unique joins and ram usage.
 
 # Is this for me?
 If you run a Minecraft server and would like a lightweight plugin to see your server's status straight from your Discord server, you may find this useful.
 
 # Why Minebuddy?
-Minebuddy is extremely simple and configurable, and it can be used on 1.13+.
+Minebuddy is extremely lightweight and configurable, and it can be used on 1.13+. As a Minecraft server owner/developer, you probably spend a bit of time on Discord. Being able to view useful server statistics without leaving Discord is convenient!
 
 # Setup
 1. Create a Discord bot here if you don't already have one: https://discord.com/developers/applications/
@@ -17,6 +17,13 @@ Minebuddy is extremely simple and configurable, and it can be used on 1.13+.
 6. If the bot is not already in your server, invite it with the link prompted in the console startup
 7. Try using "!help" on your Discord server
 8. If it works, you're done! Feel free to change the configuration to suit your needs.
+
+# Troubleshooting
+- If you get the "failed to connect to Discord" error, make sure your token is set properly.
+- If the plugin enables properly and the bot is in your discord, but commands do not work, ensure the bot has chat permissions.
+
+# Warning
+- This bot is a staff tool, so be careful giving normal players permission to use it (they will be able to issue broadcast/stop commands).
 
 # Commands
 Command syntax is determined like this: "{commandSymbol}{commandPrefix}{commandName}"
