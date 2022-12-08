@@ -1,6 +1,6 @@
 # Minebuddy
 
-A Minecraft plugin utility that allows you to host a Discord bot.
+A Minecraft plugin utility that allows you to host a Discord bot. The bot has basic commands such as broadcast and stop, and a variety of server status information such as TPS, player count, unique joins and ram usage.
 
 # Is this for me?
 If you run a Minecraft server and would like a lightweight plugin to see your server's status straight from your Discord server, you may find this useful.
