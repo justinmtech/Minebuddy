@@ -3,5 +3,4 @@ version: '${project.version}'
 main: com.justinmtech.minebuddy.Minebuddy
 api-version: 1.13
 description: A configurable Discord bot plugin for checking server status.
-softdepend:
-  - PlaceholderAPI
+depend: [PlaceholderAPI]
