@@ -3,7 +3,7 @@
 A Minecraft plugin utility that allows you to host a Discord bot.
 
 # Is this for me?
-If you run a Minecraft server and would like to see your server's status straight from your Discord server, you may find this useful.
+If you run a Minecraft server and would like a lightweight plugin to see your server's status straight from your Discord server, you may find this useful.
 
 # Why Minebuddy?
 Minebuddy is extremely simple and configurable, and it can be used on all versions after 1.13.
