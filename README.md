@@ -1,4 +1,5 @@
-# Minebuddy
+![Minebuddy](https://user-images.githubusercontent.com/8346060/206354053-efaa76b3-e901-4a19-81a4-953a0d087514.png)
+
 
 A Minecraft plugin utility that allows you to host a Discord bot. The bot has basic admin commands such as broadcast and stop, and a variety of server status information such as TPS, player count, unique joins and ram usage.
 
