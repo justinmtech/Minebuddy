@@ -1,6 +1,7 @@
 package com.justinmtech.minebuddy;
 
 import com.justinmtech.minebuddy.commands.*;
+import com.justinmtech.minebuddy.notifications.Notifier;
 import com.justinmtech.minebuddy.util.ActivityMessageUpdater;
 import com.justinmtech.minebuddy.util.ServerStatus;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,6 +14,7 @@ import org.javacord.api.entity.user.UserStatus;
 public final class Minebuddy extends JavaPlugin {
     private DiscordApi api;
     private ServerStatus status;
+    private Notifier notifier;
 
     @Override
     public void onEnable() {
@@ -30,11 +32,13 @@ public final class Minebuddy extends JavaPlugin {
 
         setStatus(new ServerStatus(getConfig()));
         new ActivityMessageUpdater(this);
+
     }
 
     @Override
     public void onDisable() {
         if (getApi() != null) {
+            getNotifier().sendDiscordAlert(getStatus().getName() + " is now offline!");
             getApi().disconnect();
             setApi(null);
         }
@@ -55,6 +59,15 @@ public final class Minebuddy extends JavaPlugin {
         api.addListener(new StopServerCommand(getConfig()));
         api.addListener(new ServerStatusCommand(getConfig(), getStatus()));
 
+        activateAlertsIfEnabled();
+    }
+
+    private void activateAlertsIfEnabled() {
+        if (getConfig().getBoolean("alerts.enabled", false)) {
+            notifier = new Notifier(this);
+            getServer().getPluginManager().registerEvents(getNotifier(), this);
+            getNotifier().sendDiscordAlert(getStatus().getName() + " is now online!");
+        }
     }
 
     public String getToken() {
@@ -75,5 +88,9 @@ public final class Minebuddy extends JavaPlugin {
 
     public void setStatus(ServerStatus status) {
         this.status = status;
+    }
+
+    public Notifier getNotifier() {
+        return notifier;
     }
 }

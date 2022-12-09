@@ -44,6 +44,19 @@ public class ServerStatus {
         return getPlaceholders("%server_tps_1%");
     }
 
+    public double getTpsFromPastMinuteAsDouble() {
+        String tpsString = getPlaceholders("%server_tps_1%");
+        if (tpsString.contains("*")) tpsString = tpsString.replace("*", "");
+        double tps;
+        try {
+            tps = Double.parseDouble(tpsString);
+        } catch (NumberFormatException e) {
+            return 5.0;
+        }
+        return tps;
+    }
+
+
     public int getStaffOnline() {
         String permission = getConfig().getString("staff-permission");
         if (permission == null) return 0;
